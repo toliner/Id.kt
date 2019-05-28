@@ -1,3 +1,5 @@
+@file:Suppress("EXPERIMENTAL_API_USAGE")
+
 package net.toliner.idkt
 
 import com.soywiz.klock.DateTimeTz
@@ -9,19 +11,19 @@ interface RandomId : Id {
     val random: Random
 }
 
-interface ComparableId : Id, Comparable<ComparableId>
+interface ComparableId<T : Id> : Id, Comparable<T>
 
-interface TimestampId : ComparableId {
+interface TimestampId : ComparableId<TimestampId> {
     val time: DateTimeTz
 }
 
 interface RandomTimestampId : RandomId, TimestampId
 
 interface Id64bit : Id {
-    val value: Long
+    val value: ULong
 }
 
 interface Id128Bit : Id {
-    val firstBits: Long
-    val lastBits: Long
+    val firstBits: ULong
+    val lastBits: ULong
 }
