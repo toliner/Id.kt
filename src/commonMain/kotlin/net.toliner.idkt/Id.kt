@@ -16,3 +16,12 @@ interface TimestampId : ComparableId {
 }
 
 interface RandomTimestampId : RandomId, TimestampId
+
+interface Id64bit : Id {
+    val value: Long
+}
+
+interface Id128Bit : Id {
+    val firstBits: Long
+    val lastBits: Long
+}
